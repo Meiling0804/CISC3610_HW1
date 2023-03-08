@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fruit Sales Chart</title>
+	<script>
+		var fruits = [
+			{name: "Apple", quantity: 20, color: "#F73812"},
+			{name: "Orange", quantity: 10, color: "#F16B1E"},
+			{name: "Banana", quantity: 15, color: "#F6C80D"},
+			{name: "Kiwi", quantity: 5, color: "#4C7648"},
+			{name: "Blueberry", quantity: 5, color: "#4430D4"},
+			{name: "Grapes", quantity: 10, color: "#7138E3"}
+		];
+
+		function drawChart() {
+			var canvas = document.getElementById("chartCanvas");
+			var context = canvas.getContext("2d");
+
+			// set chart dimensions and margins
+			var chartWidth = canvas.width - 100;
+			var chartHeight = canvas.height-100;
+			var chartTopMargin = 20;
+
+			// calculate bar width and gap
+			var barWidth = chartHeight / fruits.length;
+			//var barGap = barWidth * 0.2;
+
+			// find the maximum quantity for scaling
+			var maxQuantity = fruits.reduce(function(prev, current) {
+				return (prev.quantity > current.quantity) ? prev : current
+			}).quantity;
+
+			
+			// draw chart labels
+			context.font = "25px Arial";
+			context.textAlign = "center";
+			context.fillText("Fruit Sales Chart", canvas.width / 2, chartTopMargin+20 );
+			
+
+			// draw bars and labels for each fruit
+		
+        fruits.forEach(function(fruit, index) {
+                //var x = barWidth+20;
+				var y = (index+1)*barWidth-chartTopMargin;
+				var length = fruit.quantity / maxQuantity * chartWidth;
+				var color = fruit.color;
+                
+				// draw bar
+				context.fillStyle = color;
+				context.fillRect(0, y, length ,barWidth);
+                //x++;
+				// draw label
+			  	context.fillStyle = "black";
+                context.fillText(fruit.quantity, 50, y+30);
+				context.fillText(fruit.name, 60, y+60);
+            });
+		} 
+	</script>
+</head>
+<body onload="drawChart();">
+	<canvas id="chartCanvas" width="800" height="600"></canvas>
+</body>
+</html>
