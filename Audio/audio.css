@@ -1,0 +1,27 @@
+.sound-machine {
+	background-color: rgb(242, 247, 189);
+	border: 5px solid rgb(215, 144, 152);
+	border-radius: 20px;
+	padding: 20px;
+	display: inline-block;
+}
+
+.sound-button {
+	background-color: rgb(132, 187, 231);
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 10px;
+	margin: 10px;
+	cursor: pointer;
+}
+
+.sound-button:hover {
+	background-color: rgb(188, 132, 211);
+}
+
+h1 {
+	text-align: center;
+	font-size: 2em;
+	margin-bottom: 20px;
+}
